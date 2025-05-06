@@ -1,0 +1,20 @@
+<div class="task-wrapper text-center">
+  <h1>My Tasks</h1>
+
+  <div class="mb-4">
+    <%= link_to '➕ New Task', '/tasks/new', class: 'btn btn-success' %>
+  </div>
+
+  <ul class="text-start">
+    <% @tasks.each do |task| %>
+      <li>
+        <strong><%= link_to task.title, "/tasks/#{task.id}" %></strong>
+        <div>
+          <%= link_to 'Edit', "/tasks/#{task.id}/edit", class: 'btn btn-sm btn-primary' %>
+         <%= link_to 'Delete', task_path(task), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
